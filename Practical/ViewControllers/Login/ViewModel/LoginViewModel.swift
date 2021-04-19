@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+final class LoginViewModel: ValidationViewModel {
+
+    private let service = AuthServices()
+
+    
+}

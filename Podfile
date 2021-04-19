@@ -6,6 +6,8 @@ target 'Practical' do
   use_frameworks!
 
   # Pods for Practical
-  pod 'RxAlamofire/RxCocoa'
   
+  pod 'Moya-ObjectMapper/RxSwift'
+  pod 'RxCocoa'
+
 end

@@ -18,6 +18,8 @@
 		06887868262D9789004B0AB7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06887867262D9789004B0AB7 /* LoginViewModel.swift */; };
 		0688786D262D979F004B0AB7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688786C262D979F004B0AB7 /* LoginModel.swift */; };
 		06887872262D9815004B0AB7 /* ValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06887871262D9815004B0AB7 /* ValidationViewModel.swift */; };
+		06887883262D9A14004B0AB7 /* ServiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06887882262D9A14004B0AB7 /* ServiceRouter.swift */; };
+		06887888262D9ADA004B0AB7 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06887887262D9ADA004B0AB7 /* AuthServices.swift */; };
 		A7B2F5EF0DD3EFF28E830F58 /* Pods_Practical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9830103723A5938658E31492 /* Pods_Practical.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		06887867262D9789004B0AB7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0688786C262D979F004B0AB7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		06887871262D9815004B0AB7 /* ValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewModel.swift; sourceTree = "<group>"; };
+		06887882262D9A14004B0AB7 /* ServiceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRouter.swift; sourceTree = "<group>"; };
+		06887887262D9ADA004B0AB7 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		0E22057AA96854FDAB61266B /* Pods-Practical.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practical.debug.xcconfig"; path = "Target Support Files/Pods-Practical/Pods-Practical.debug.xcconfig"; sourceTree = "<group>"; };
 		9830103723A5938658E31492 /* Pods_Practical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79EC184A7C0566D776DD64B /* Pods-Practical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practical.release.xcconfig"; path = "Target Support Files/Pods-Practical/Pods-Practical.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 			children = (
 				06887839262D912D004B0AB7 /* AppDelegate.swift */,
 				0688783B262D912D004B0AB7 /* SceneDelegate.swift */,
+				06887885262D9A1B004B0AB7 /* Services */,
 				06887860262D9658004B0AB7 /* Extensions */,
 				06887862262D965E004B0AB7 /* Helper */,
 				06887858262D9570004B0AB7 /* ViewControllers */,
@@ -159,6 +164,15 @@
 				0688786F262D97A5004B0AB7 /* Model */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		06887885262D9A1B004B0AB7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				06887882262D9A14004B0AB7 /* ServiceRouter.swift */,
+				06887887262D9ADA004B0AB7 /* AuthServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C65DF1DC8F7F30AEC32AB927 /* Pods */ = {
@@ -293,9 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0688783E262D912D004B0AB7 /* LoginController.swift in Sources */,
+				06887883262D9A14004B0AB7 /* ServiceRouter.swift in Sources */,
 				0688786D262D979F004B0AB7 /* LoginModel.swift in Sources */,
 				0688785E262D95A6004B0AB7 /* Text.swift in Sources */,
 				06887872262D9815004B0AB7 /* ValidationViewModel.swift in Sources */,
+				06887888262D9ADA004B0AB7 /* AuthServices.swift in Sources */,
 				06887868262D9789004B0AB7 /* LoginViewModel.swift in Sources */,
 				0688783A262D912D004B0AB7 /* AppDelegate.swift in Sources */,
 				0688785B262D958B004B0AB7 /* Extension+UIAlertController.swift in Sources */,

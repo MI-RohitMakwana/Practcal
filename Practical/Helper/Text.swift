@@ -8,8 +8,8 @@
 import Foundation
 
 struct AlertMessage {
-    static let validEmail = "Please enter a valid email"
-    static let validPassword = "Please enter a valid password"
+    static let validEmail = "This is a invalid email."
+    static let validPassword = "Passwords require at least 1 uppercase, 1 lowercase, and 1 number."
 }
 
 struct Title {
@@ -18,4 +18,9 @@ struct Title {
     static let No = "No"
     static let Error = "Error"
     static let Login = "Login"
+}
+
+enum RegexType: String {
+    case email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    case password = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,16}$"
 }

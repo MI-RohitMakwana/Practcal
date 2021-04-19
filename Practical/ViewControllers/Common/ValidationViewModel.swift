@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
+
+protocol ValidationViewModel {
+
+    associatedtype Input
+    associatedtype Output
+
+    func transform(input: Input) -> Output
+}
