@@ -14,4 +14,8 @@ struct AlertMessage {
 
 struct Title {
     static let OK = "OK"
+    static let Yes = "Yes"
+    static let No = "No"
+    static let Error = "Error"
+    static let Login = "Login"
 }
