@@ -13,8 +13,9 @@ class LoginController: UIViewController {
 
     //MARK:- IBOutlets
     @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var emailErrorLabel: UILabel!
     @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet private weak var passwordHintLabel: UILabel!
+    @IBOutlet private weak var passwordErrorLabel: UILabel!
     @IBOutlet private weak var loginButton: UIButton!
 
     // MARK: - Properties
@@ -29,7 +30,8 @@ class LoginController: UIViewController {
 
         self.viewModel = LoginViewModel()
         self.configure(with: self.viewModel)
-        self.passwordHintLabel.isHidden = true
+        self.emailErrorLabel.isHidden = true
+        self.passwordErrorLabel.isHidden = true
     }
 
     //MARK: - Helpert Methods
@@ -37,21 +39,32 @@ class LoginController: UIViewController {
     // Create Binding
     fileprivate func createBinding() {
 
+        //Email validate
         emailTextField.rx.controlEvent(UIControl.Event.editingDidBegin).subscribe { (_) in
-            self.passwordHintLabel.isHidden = true
+            self.passwordErrorLabel.isHidden = self.passwordTextField.text?.count == 0 || self.passwordTextField.text!.isValidPassword
+        }.disposed(by: disposeBag)
+
+        emailTextField.rx.controlEvent(UIControl.Event.editingChanged).subscribe { (_) in
+            self.emailErrorLabel.isHidden = self.emailTextField.text!.isValidEmail
         }.disposed(by: disposeBag)
 
         emailTextField.rx.controlEvent(UIControl.Event.editingDidEndOnExit).subscribe { (_) in
             self.passwordTextField.becomeFirstResponder()
+            self.emailErrorLabel.isHidden = self.emailTextField.text?.count == 0 || self.emailTextField.text!.isValidEmail
         }.disposed(by: disposeBag)
 
+        //Password validate
         passwordTextField.rx.controlEvent(UIControl.Event.editingDidBegin).subscribe { (_) in
-            self.passwordHintLabel.isHidden = false
+            self.passwordErrorLabel.isHidden = self.passwordTextField.text?.count == 0 || self.passwordTextField.text!.isValidPassword
+            self.emailErrorLabel.isHidden = self.emailTextField.text?.count == 0 || self.emailTextField.text!.isValidEmail
         }.disposed(by: disposeBag)
-        
+
+        passwordTextField.rx.controlEvent(UIControl.Event.editingChanged).subscribe { (_) in
+            self.passwordErrorLabel.isHidden = self.passwordTextField.text!.isValidPassword
+        }.disposed(by: disposeBag)
+
         passwordTextField.rx.controlEvent(UIControl.Event.editingDidEndOnExit).subscribe { (_) in
-            self.passwordTextField.becomeFirstResponder()
-            self.passwordHintLabel.isHidden = true
+            self.passwordErrorLabel.isHidden = self.passwordTextField.text?.count == 0 || self.passwordTextField.text!.isValidPassword
         }.disposed(by: disposeBag)
     }
 
@@ -67,7 +80,7 @@ class LoginController: UIViewController {
 
         output.loginEnabled.drive(onNext: { [weak self] in
             self?.loginButton.isEnabled = $0
-            self?.loginButton.alpha = $0 ? 1: 0.6
+            self?.loginButton.alpha = $0 ? 1: 0.2
         }).disposed(by: disposeBag)
 
         output.result.drive { response  in
