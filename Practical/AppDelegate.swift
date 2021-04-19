@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func setRootController(_ contrlloer : UIViewController) {
+        UIApplication.shared.windows.first?.rootViewController = UINavigationController(rootViewController: contrlloer)
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
 
 }
 

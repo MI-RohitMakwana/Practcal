@@ -7,15 +7,8 @@
 
 import Foundation
 
-struct AlertMessage {
-    static let validEmail = "This is a invalid email."
-    static let validPassword = "Passwords require at least 1 uppercase, 1 lowercase, and 1 number."
-}
-
 struct Title {
     static let OK = "OK"
-    static let Yes = "Yes"
-    static let No = "No"
     static let Error = "Error"
     static let Login = "Login"
 }

@@ -50,4 +50,16 @@ struct User: Codable {
         case userName
         case createdAt = "created_at"
     }
+    
+    var toDictionary: [String:Any] {
+        return [CodingKeys.userID.rawValue: userID,
+                CodingKeys.userName.rawValue: userName,
+                CodingKeys.createdAt.rawValue: createdAt]
+    }
+
+    init(_ json: [String:Any]) {
+        self.userID = json[CodingKeys.userID.rawValue] as? Int ?? 0
+        self.userName = json[CodingKeys.userName.rawValue] as? String ?? ""
+        self.createdAt = json[CodingKeys.createdAt.rawValue] as? String ?? ""
+    }
 }

@@ -18,14 +18,20 @@ class LoginController: UIViewController {
     
     // MARK: - Properties
     fileprivate let disposeBag = DisposeBag()
+    var viewModel: LoginViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Login"
+        self.viewModel = LoginViewModel()
+
+        self.title = Title.Login
         self.createBinding()
 
-        self.configure(with: LoginViewModel())
+        self.configure(with: self.viewModel)
+
+        emailTextField.text = "test@imaginato.com"
+        passwordTextField.text = "Imaginato2020"
     }
 
     fileprivate func createBinding() {
@@ -57,6 +63,19 @@ class LoginController: UIViewController {
 
         output.result.drive { response  in
             print(response)
+            if response.result == 0 {
+                UIAlertController
+                    .present(in: self, title: Title.Error, message: response.errorMessage)
+                    .subscribe(onNext: { buttonIndex in
+                    }).disposed(by: self.disposeBag)
+            }
+            else {
+                UserDefaults.standard.user = response.data.user
+                self.navigationController?.pushViewController(WelcomeViewController.instantiate(),
+                                                              animated: true)
+                
+//                (UIApplication.shared.delegate as! AppDelegate).setRootController(WelcomeViewController.instantiate())
+            }
         }.disposed(by: disposeBag)
     }
 }

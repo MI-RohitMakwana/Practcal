@@ -15,12 +15,28 @@ protocol AuthServiceProtocol : class {
 }
 
 private let provider = MoyaProvider<ServiceRouter>()
-
 final class AuthServices: AuthServiceProtocol {
 
+    private let disposeBag = DisposeBag()
+
     func doLogin(_ router: ServiceRouter) -> Observable<LoginResultModel> {
-        return Observable.create { _ in
+        return Observable.create { observer in
+            let _ = provider.rx.request(router)
+                .asObservable()
+                .subscribe { (response) in
+                    let output = try! JSONDecoder().decode(LoginResultModel.self, from: response.data)
+                    observer.onNext(output)
+                    observer.onCompleted()
+                } onError: { (error) in
+                    observer.onError(error)
+                }
+                .disposed(by: self.disposeBag)
             return Disposables.create()
         }
+    }
+
+    // De-init
+    deinit {
+        print("\(self) dealloc")
     }
 }
