@@ -51,7 +51,7 @@ class LoginController: UIViewController {
         
         passwordTextField.rx.controlEvent(UIControl.Event.editingDidEndOnExit).subscribe { (_) in
             self.passwordTextField.becomeFirstResponder()
-            self.passwordHintLabel.isHidden = false
+            self.passwordHintLabel.isHidden = true
         }.disposed(by: disposeBag)
     }
 
