@@ -71,6 +71,8 @@ class LoginController: UIViewController {
         }).disposed(by: disposeBag)
 
         output.result.drive { response  in
+            self.emailTextField.resignFirstResponder()
+            self.passwordTextField.resignFirstResponder()
             if response.result == 0 {
                 UIAlertController
                     .present(in: self, title: Title.Error, message: response.errorMessage)
