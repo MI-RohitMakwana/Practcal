@@ -12,15 +12,12 @@ extension String {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", RegexType.email.rawValue)
         return emailPred.evaluate(with: self)
     }
-    
+
     var isValidPassword: Bool {
-        // least one uppercase,
-        // least one digit
-        // least one lowercase
-        // min 8 & max 16 characters
+        if self.contains(" ") {
+            return false
+        }
         let passwordCheck = NSPredicate(format: "SELF MATCHES %@", RegexType.password.rawValue)
         return passwordCheck.evaluate(with: self)
     }
 }
-
-
