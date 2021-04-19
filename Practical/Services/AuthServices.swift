@@ -11,14 +11,16 @@ import RxCocoa
 import Moya
 
 protocol AuthServiceProtocol : class {
-    func doLogin(_ router: ServiceRouter) -> Observable<Bool>
+    func doLogin(_ router: ServiceRouter) -> Observable<LoginResultModel>
 }
 
 private let provider = MoyaProvider<ServiceRouter>()
 
 final class AuthServices: AuthServiceProtocol {
-    
-    func doLogin(_ router: ServiceRouter) -> Observable<Bool> {
-        
+
+    func doLogin(_ router: ServiceRouter) -> Observable<LoginResultModel> {
+        return Observable.create { _ in
+            return Disposables.create()
+        }
     }
 }
