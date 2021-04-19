@@ -17,7 +17,7 @@ final class LoginViewModel: ValidationViewModel {
 
         let emailAndPassword = Observable.combineLatest(input.email, input.password)
 
-        // This will help to show indicator ot disable button
+        // This will help to show indicator or disable button
         let activityIndicator = ActivityIndicator()
         
         let canlogin = Observable.combineLatest(emailAndPassword, activityIndicator.asObservable()).map {

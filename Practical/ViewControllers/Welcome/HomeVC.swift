@@ -1,5 +1,5 @@
 //
-//  WelcomeViewController.swift
+//  HomeVC.swift
 //  Practical
 //
 //  Created by mind-0023 on 19/04/21.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class HomeVC: UIViewController {
 
     // MARK: - Varibles
-    static func instantiate() -> WelcomeViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
+    static func instantiate() -> HomeVC {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
     }
 
     // MARK: - View lifecycle
