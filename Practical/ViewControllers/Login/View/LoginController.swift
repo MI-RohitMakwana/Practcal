@@ -15,11 +15,12 @@ class LoginController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
-    
+
     // MARK: - Properties
     fileprivate let disposeBag = DisposeBag()
     var viewModel: LoginViewModel!
 
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,13 +30,12 @@ class LoginController: UIViewController {
         self.createBinding()
 
         self.configure(with: self.viewModel)
-
-        emailTextField.text = "test@imaginato.com"
-        passwordTextField.text = "Imaginato2020"
     }
 
-    fileprivate func createBinding() {
+    //MARK: - Helpert Methods
 
+    // Create Binding
+    fileprivate func createBinding() {
         emailTextField.rx.controlEvent(UIControl.Event.editingDidEndOnExit).subscribe { (_) in
             self.passwordTextField.becomeFirstResponder()
         }.disposed(by: disposeBag)
@@ -53,8 +53,6 @@ class LoginController: UIViewController {
         let output = viewModel.transform(input: input)
 
         output.loginEnabled.drive(loginButton.rx.isEnabled).disposed(by: disposeBag)
-        output.loginEnabled.map { $0 ? 1 : 0.5 }
-            .drive(loginButton.rx.alpha).disposed(by: disposeBag)
 
         output.loginEnabled.drive(onNext: { [weak self] in
             self?.loginButton.isEnabled = $0
@@ -73,8 +71,6 @@ class LoginController: UIViewController {
                 UserDefaults.standard.user = response.data.user
                 self.navigationController?.pushViewController(WelcomeViewController.instantiate(),
                                                               animated: true)
-                
-//                (UIApplication.shared.delegate as! AppDelegate).setRootController(WelcomeViewController.instantiate())
             }
         }.disposed(by: disposeBag)
     }

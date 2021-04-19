@@ -101,6 +101,7 @@
 		06887858262D9570004B0AB7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				068878A4262DB388004B0AB7 /* Welcome */,
 				06887875262D9827004B0AB7 /* Common */,
 				06887877262D9858004B0AB7 /* Login */,
 			);
@@ -163,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				06887871262D9815004B0AB7 /* ValidationViewModel.swift */,
-				068878A1262DB119004B0AB7 /* WelcomeViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -185,6 +185,14 @@
 				06887887262D9ADA004B0AB7 /* AuthServices.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		068878A4262DB388004B0AB7 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				068878A1262DB119004B0AB7 /* WelcomeViewController.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		C65DF1DC8F7F30AEC32AB927 /* Pods */ = {

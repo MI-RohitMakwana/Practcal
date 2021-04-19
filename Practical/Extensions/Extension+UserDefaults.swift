@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
+
 extension UserDefaults {
-    
-    var user : User? {
+
+    var user: User? {
         get {
             if let user = UserDefaults.standard.object(forKey: "user") as? [String:Any] {
                 return User(user)
             } else {
-                print("There is an issue")
                 return nil
             }
         }

@@ -16,7 +16,7 @@ final class LoginViewModel: ValidationViewModel {
     func transform(input: Input) -> Output {
 
         let emailAndPassword = Observable.combineLatest(input.email, input.password)
-        
+
         // This will help to show indicator ot disable button
         let activityIndicator = ActivityIndicator()
         
@@ -52,24 +52,3 @@ extension LoginViewModel {
         let result: Driver<LoginResultModel>
     }
 }
-
-//Sample response
-
-//{
-//    "result": 1,
-//    "error_message": "",
-//    "data": {
-//        "user": {
-//            "userId": 11,
-//            "userName": "username",
-//            "created_at": "2020-12-07T04:30:49.822Z"
-//        }
-//    }
-//}
-
-
-//{
-//    "result": 0,
-//    "error_message": "Your email or password is incorrect.",
-//    "data": {}
-//}

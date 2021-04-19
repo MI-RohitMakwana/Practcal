@@ -11,6 +11,7 @@ struct Title {
     static let OK = "OK"
     static let Error = "Error"
     static let Login = "Login"
+    static let Welcome = "Welcome"
 }
 
 enum RegexType: String {

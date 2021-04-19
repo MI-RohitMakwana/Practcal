@@ -18,7 +18,7 @@ extension String {
         // least one digit
         // least one lowercase
         // min 8 & max 16 characters
-        let passwordCheck = NSPredicate(format: "SELF MATCHES %@",RegexType.password.rawValue)
+        let passwordCheck = NSPredicate(format: "SELF MATCHES %@", RegexType.password.rawValue)
         return passwordCheck.evaluate(with: self)
     }
 }
