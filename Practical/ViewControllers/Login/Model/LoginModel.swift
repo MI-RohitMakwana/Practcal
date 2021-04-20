@@ -19,12 +19,12 @@ public struct LoginModel {
 
 struct LoginResultModel: Codable {
     let result: Int
-    let errorMessage: String
+    var errorMessage: String
     let data: DataClass
 
     init() {
         result = 0
-        errorMessage = "Something went wrong"
+        errorMessage = "Your email or password is incorrect."
         data = DataClass(user: nil)
     }
 

@@ -24,8 +24,8 @@ final class AuthServices: AuthServiceProtocol {
             let _ = provider.rx.request(router)
                 .asObservable()
                 .subscribe { (response) in
-                    let output = try! JSONDecoder().decode(LoginResultModel.self, from: response.data)
-                    observer.onNext(output)
+                    let output = try? JSONDecoder().decode(LoginResultModel.self, from: response.data)
+                    observer.onNext(output ?? LoginResultModel())
                     observer.onCompleted()
                 } onError: { (error) in
                     observer.onError(error)
